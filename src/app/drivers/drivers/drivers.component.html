@@ -1,0 +1,56 @@
+<h1>Drivers</h1>
+<div class="row">
+  <div class="col-2">
+    <app-season-selector
+      (seasonChange)="handleSeason($event)"
+    ></app-season-selector>
+  </div>
+  <div class="col-10">
+    <table
+      class="table table-light"
+      *ngIf="drivers$ | async as drivers; else notice"
+    >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Birthday</th>
+          <th scope="col">Wiki</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <app-page-size #pageSize></app-page-size>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr
+          *ngFor="
+            let driver of drivers
+              | slice : 0 : (pageSize.pageSizeChange | async)!;
+            trackBy: trackById
+          "
+        >
+          <td>{{ driver.permanentNumber }}</td>
+          <td>
+            {{ driver | fullName | titlecase }}
+            <span class="badge bg-secondary">{{ driver.code }}</span>
+          </td>
+          <td>{{ driver.nationality | titlecase }}</td>
+          <td>{{ driver.dateOfBirth | date }}</td>
+          <td>
+            <a [href]="driver.url" target="_blank" class="btn btn-info"
+              >+info</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #notice>
+      <div class="alert alert-info">Please, first select a season</div>
+    </ng-template>
+  </div>
+</div>

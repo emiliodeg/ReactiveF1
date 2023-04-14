@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -100,5 +101,9 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "0b967de7-15d7-4464-a92f-76c542fd7f11",
+    "packageManager": "yarn"
   }
 }

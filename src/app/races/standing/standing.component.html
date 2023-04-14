@@ -1,0 +1,33 @@
+<h1 class="h3">Standing</h1>
+<div class="alert alert-warning" *ngIf="standing == null">
+  Something went wrong with standing results
+</div>
+<table class="table table-sm table-light" *ngIf="standing?.length">
+  <thead>
+    <tr>
+      <th scope="col">Position</th>
+      <th scope="col">Points</th>
+      <th scope="col">Driver</th>
+      <th scope="col">Constructor</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td colspan="4">
+        <app-page-size #pageSize></app-page-size>
+      </td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr
+      *ngFor="
+        let result of standing | slice : 0 : +(pageSize.pageSizeChange | async)!
+      "
+    >
+      <td>{{ result.position }}</td>
+      <td>{{ result.points }}</td>
+      <td>{{ result.Driver | fullName | titlecase }}</td>
+      <td>{{ result.Constructors | join : 'name' }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,7 @@
+.container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}

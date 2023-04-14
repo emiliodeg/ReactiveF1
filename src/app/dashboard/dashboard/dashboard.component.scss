@@ -1,0 +1,15 @@
+.section-container {
+  display: grid;
+  gap: 30px;
+  grid-auto-flow: column;
+  justify-content: center;
+  margin: 2rem;
+
+  mat-card {
+    color: white;
+    &-content {
+      font-size: 6rem;
+      line-height: 1.5;
+    }
+  }
+}

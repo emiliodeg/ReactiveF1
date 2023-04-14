@@ -1,0 +1,9 @@
+<ng-container [ngSwitch]="true">
+  <span class="text-success" *ngSwitchCase="difference < 0">
+    ({{ difference }})
+  </span>
+  <span class="text-danger" *ngSwitchCase="difference > 0"
+    >(+{{ difference }})</span
+  >
+  <span class="text-secondary" *ngSwitchDefault>(=)</span>
+</ng-container>

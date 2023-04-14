@@ -1,0 +1,8 @@
+<ng-container *ngIf="races$ | async as races">
+  <select class="form-select" [ngModel]="null" (ngModelChange)="handleRaceChange($any($event))">
+    <option selected>Select a race</option>
+    <option *ngFor="let race of races" [ngValue]="race">
+      {{ race.raceName }}
+    </option>
+  </select>
+</ng-container>

@@ -1,0 +1,44 @@
+<h1 class="h3">Final Results</h1>
+<div class="alert alert-warning" *ngIf="results == null">
+  Something went wrong with results
+</div>
+<table class="table table-sm table-light" *ngIf="results?.length">
+  <thead>
+    <tr>
+      <th scope="col">Position</th>
+      <th scope="col">Grid</th>
+      <th scope="col">Driver</th>
+      <th scope="col">Constructor</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <app-page-size #pageSize></app-page-size>
+      </td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr
+      *ngFor="
+        let result of results | slice : 0 : +(pageSize.pageSizeChange | async)!
+      "
+    >
+      <td>{{ result.position }}</td>
+      <td>
+        {{ result.grid }}
+        <app-difference
+          [start]="+result.grid"
+          [end]="+result.position"
+        ></app-difference>
+      </td>
+      <td>{{ result.Driver | fullName | titlecase }}</td>
+      <td>{{ result.Constructor.name | titlecase }}</td>
+      <td>{{ result.status }}</td>
+    </tr>
+  </tbody>
+  <caption>
+    <app-summary [results]="results!"></app-summary>
+  </caption>
+</table>

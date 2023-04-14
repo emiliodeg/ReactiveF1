@@ -1,0 +1,17 @@
+<div class="form-floating">
+  <select
+    class="form-select"
+    id="floatingSelect"
+    aria-label="Select page size"
+    (change)="handleChange($event)"
+  >
+    <option
+      *ngFor="let size of pageSizes; first as isFirst"
+      [value]="size"
+      [selected]="isFirst"
+    >
+      {{ size }}
+    </option>
+  </select>
+  <label for="floatingSelect">Select page size</label>
+</div>

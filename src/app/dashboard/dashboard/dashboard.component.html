@@ -1,0 +1,9 @@
+<div class="section-container">
+  <div class="card" *ngFor="let card of cards">
+    <div class="card-body">
+      <h5 class="card-title">{{ card.title }}</h5>
+      <p class="card-text">{{ card.icon }}</p>
+      <a [routerLink]="card.url" class="card-link">Go to {{ card.title }}</a>
+    </div>
+  </div>
+</div>

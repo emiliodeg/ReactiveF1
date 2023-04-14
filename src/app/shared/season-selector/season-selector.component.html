@@ -1,0 +1,4 @@
+<select class="form-select mb-3" (change)="handleChange($event)">
+  <option selected>Select a season</option>
+  <option *ngFor="let season of seasons" [value]="season">{{ season }}</option>
+</select>
